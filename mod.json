@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"author": "Your Name Here",
 	"compatible_minor_versions": [
-		0
+		1
 	],
 	"unloadable": true,
 	"files": [
