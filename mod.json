@@ -4,12 +4,10 @@
 	"version": "1.0.0",
 	"author": "Your Name Here",
 	"compatible_minor_versions": [
-		1
+		2
 	],
 	"unloadable": true,
-	"files": [
-		"helloworld.js"
-	],
+	"file": "helloworld.js",
 	"hooks": [
 		"OnGameStart",
 		"OnItemEquip",

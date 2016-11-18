@@ -1,6 +1,6 @@
 ﻿/// <reference path="mod-reference/modreference.d.ts"/>
 
-class Mod extends Mods.Mod {
+export default class Mod extends Mods.Mod {
 	private helloWorld: number;
 	private helloLeftHand: number;
 	private helloRightHand: number;
@@ -27,7 +27,8 @@ class Mod extends Mods.Mod {
 	// Hooks
 	public onGameStart(isLoadingSave: boolean, playedCount: number): void {
 		ui.displayMessage(this.helloWorld, MessageType.Good);
-		Item.defines[ItemType.Branch].name = "A Greetings Stick";
+		Item.defines[ItemType.Branch].prefix = "a ";
+		Item.defines[ItemType.Branch].name = "greetings stick";
 	}
 
 	public onItemEquip(item: Item.IItem, slot: EquipType): void {
@@ -40,10 +41,10 @@ class Mod extends Mods.Mod {
 		}
 	}
 
-	public onMove(nextX: number, nextY: number, tile: ITile, direction: FacingDirection): boolean {
-		var getTile = game.getTile(player.x, player.y, player.z);
-		var tileType = Utilities.TileHelpers.getType(getTile);
-		ui.displayMessage(this.helloTerrain, MessageType.Stat, terrains[tileType].name);
+	public onMove(nextX: number, nextY: number, tile: Terrain.ITile, direction: FacingDirection): boolean | undefined {
+		let getTile = game.getTile(player.x, player.y, player.z);
+		let tileType = Utilities.TileHelpers.getType(getTile);
+		ui.displayMessage(this.helloTerrain, MessageType.Stat, Terrain.defines[tileType].name);
 		return undefined;
 	}
 }
