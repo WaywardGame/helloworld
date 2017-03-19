@@ -1,11 +1,13 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"module": "amd",
-		"declaration": true,
-		"noImplicitAny": true,
-		"removeComments": true,
-		"preserveConstEnums": true,
-		"sourceMap": true
-	}
+    "compilerOptions": {
+        "target": "es6",
+        "module": "amd",
+        "declaration": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "baseUrl": "./mod-reference/definitions",
+        "types": []
+    }
 }

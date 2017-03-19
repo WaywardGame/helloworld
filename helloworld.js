@@ -1,8 +1,7 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "Enums", "item/Items", "language/Messages", "mod/Mod", "tile/Terrains", "Utilities"], function (require, exports, Enums_1, Items_1, Messages_1, Mod_1, Terrains_1, Utilities) {
     "use strict";
-    class Mod extends Mods.Mod {
-        onInitialize(saveDataGlobal) {
-        }
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class HelloWorld extends Mod_1.default {
         onLoad(saveData) {
             console.log("Hello World!");
             this.helloWorld = this.addMessage("HelloWorld", "Hello World!");
@@ -13,31 +12,28 @@ define(["require", "exports"], function (require, exports) {
         onUnload() {
             console.log("Goodbye World!");
         }
-        onSave() {
-        }
         onGameStart(isLoadingSave, playedCount) {
-            ui.displayMessage(this.helloWorld, MessageType.Good);
-            Item.defines[ItemType.Branch].prefix = "a ";
-            Item.defines[ItemType.Branch].name = "greetings stick";
+            ui.displayMessage(localPlayer, this.helloWorld, Messages_1.MessageType.Good);
+            Items_1.default[Enums_1.ItemType.Branch].prefix = "a ";
+            Items_1.default[Enums_1.ItemType.Branch].name = "greetings stick";
         }
         onItemEquip(item, slot) {
-            if (item.type === ItemType.Branch) {
-                if (slot === EquipType.LeftHand) {
-                    ui.displayMessage(this.helloLeftHand, MessageType.None);
+            if (item.type === Enums_1.ItemType.Branch) {
+                if (slot === Enums_1.EquipType.LeftHand) {
+                    ui.displayMessage(localPlayer, this.helloLeftHand, Messages_1.MessageType.None);
                 }
                 else {
-                    ui.displayMessage(this.helloRightHand, MessageType.None);
+                    ui.displayMessage(localPlayer, this.helloRightHand, Messages_1.MessageType.None);
                 }
             }
         }
         onMove(nextX, nextY, tile, direction) {
-            let getTile = game.getTile(player.x, player.y, player.z);
-            let tileType = Utilities.TileHelpers.getType(getTile);
-            ui.displayMessage(this.helloTerrain, MessageType.Stat, Terrain.defines[tileType].name);
+            const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
+            const tileType = Utilities.TileHelpers.getType(getTile);
+            ui.displayMessage(localPlayer, this.helloTerrain, Messages_1.MessageType.Stat, Terrains_1.default[tileType].name);
             return undefined;
         }
     }
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.default = Mod;
+    exports.default = HelloWorld;
 });
-//# sourceMappingURL=helloworld.js.map
+//# sourceMappingURL=HelloWorld.js.map

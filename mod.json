@@ -1,13 +1,13 @@
 {
 	"name": "Hello World",
-	"description": "Hello World is an example mod, shown in the Modding Guide, located here: https://github.com/WaywardGame/mod-reference",
+	"description": "Hello World is an example mod, shown in the Modding Guide, located here: https://waywardgame.github.io/",
 	"version": "1.0.0",
 	"author": "Your Name Here",
-	"compatible_minor_versions": [
-		2
+	"compatibleMinorVersions": [
+		3
 	],
 	"unloadable": true,
-	"file": "helloworld.js",
+	"file": "HelloWorld.js",
 	"hooks": [
 		"OnGameStart",
 		"OnItemEquip",
