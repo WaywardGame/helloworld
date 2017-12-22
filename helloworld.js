@@ -2,38 +2,44 @@ define(["require", "exports", "Enums", "item/Items", "language/Messages", "mod/M
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class HelloWorld extends Mod_1.default {
+        onInitialize() {
+            this.dictionary = this.addDictionary("HelloWorld", HelloWorldDictionary);
+        }
         onLoad(saveData) {
             console.log("Hello World!");
-            this.helloWorld = this.addMessage("HelloWorld", "Hello World!");
-            this.helloLeftHand = this.addMessage("HelloLeftHand", "Hello Left Hand!");
-            this.helloRightHand = this.addMessage("HelloRightHand", "Hello Right Hand!");
-            this.helloTerrain = this.addMessage("HelloTerrain", "Hello _0_!");
         }
         onUnload() {
             console.log("Goodbye World!");
         }
         onGameStart(isLoadingSave, playedCount) {
-            ui.displayMessage(localPlayer, this.helloWorld, Messages_1.MessageType.Good);
+            ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloWorld), Messages_1.MessageType.Good);
             Items_1.default[Enums_1.ItemType.Branch].prefix = "a ";
             Items_1.default[Enums_1.ItemType.Branch].name = "greetings stick";
         }
-        onItemEquip(item, slot) {
+        onItemEquip(player, item, slot) {
             if (item.type === Enums_1.ItemType.Branch) {
                 if (slot === Enums_1.EquipType.LeftHand) {
-                    ui.displayMessage(localPlayer, this.helloLeftHand, Messages_1.MessageType.None);
+                    ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloLeftHand), Messages_1.MessageType.None);
                 }
                 else {
-                    ui.displayMessage(localPlayer, this.helloRightHand, Messages_1.MessageType.None);
+                    ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloRightHand), Messages_1.MessageType.None);
                 }
             }
         }
-        onMove(nextX, nextY, tile, direction) {
+        onMove(player, nextX, nextY, tile, direction) {
             const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
             const tileType = Utilities.TileHelpers.getType(getTile);
-            ui.displayMessage(localPlayer, this.helloTerrain, Messages_1.MessageType.Stat, Terrains_1.default[tileType].name);
+            ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloTerrain), Messages_1.MessageType.Stat, Terrains_1.default[tileType].name);
             return undefined;
         }
     }
     exports.default = HelloWorld;
+    var HelloWorldDictionary;
+    (function (HelloWorldDictionary) {
+        HelloWorldDictionary[HelloWorldDictionary["HelloWorld"] = 0] = "HelloWorld";
+        HelloWorldDictionary[HelloWorldDictionary["HelloLeftHand"] = 1] = "HelloLeftHand";
+        HelloWorldDictionary[HelloWorldDictionary["HelloRightHand"] = 2] = "HelloRightHand";
+        HelloWorldDictionary[HelloWorldDictionary["HelloTerrain"] = 3] = "HelloTerrain";
+    })(HelloWorldDictionary || (HelloWorldDictionary = {}));
 });
 //# sourceMappingURL=HelloWorld.js.map
