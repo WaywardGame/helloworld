@@ -7,7 +7,6 @@ import { IPlayer } from "player/IPlayer";
 import { ITile } from "tile/ITerrain";
 import Terrains from "tile/Terrains";
 import * as Utilities from "Utilities";
-import Button from "newui/util/Button";
 
 export default class HelloWorld extends Mod {
 	private dictionary: number;
@@ -35,6 +34,7 @@ export default class HelloWorld extends Mod {
 		if (item.type === ItemType.Branch) {
 			if (slot === EquipType.LeftHand) {
 				ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloLeftHand), MessageType.None);
+				
 			} else {
 				ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloRightHand), MessageType.None);
 			}

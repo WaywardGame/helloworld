@@ -1,9 +1,6 @@
 {
 	"extends": "English",
 	"dictionaries": {
-		"item": {
-			"branch": ["a", "greetings stick"]
-		},
 		"helloWorld": {
 			"helloWorld": "Hello World!",
 			"helloLeftHand": "Hello Left Hand!",
