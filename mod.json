@@ -4,16 +4,11 @@
 	"version": "1.0.0",
 	"author": "Your Name Here",
 	"compatibleMinorVersions": [
-		5
+		6
 	],
 	"unloadable": true,
 	"file": "HelloWorld.js",
 	"languages": [
 		"lang/english"
-	],
-	"hooks": [
-		"OnGameStart",
-		"OnItemEquip",
-		"OnMove"
 	]
 }

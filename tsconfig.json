@@ -8,6 +8,7 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "baseUrl": "./mod-reference/definitions",
-        "types": []
+        "types": [],
+        "experimentalDecorators": true
     }
 }
