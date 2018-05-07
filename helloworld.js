@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/Mod", "tile/Terrains", "utilities/TileHelpers"], function (require, exports, Enums_1, Items_1, IMessages_1, Mod_1, Terrains_1, TileHelpers_1) {
+define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/IHookHost", "mod/Mod", "tile/Terrains", "utilities/TileHelpers"], function (require, exports, Enums_1, Items_1, IMessages_1, IHookHost_1, Mod_1, Terrains_1, TileHelpers_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let log;
@@ -42,13 +42,13 @@ define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/
         }
     }
     __decorate([
-        Mod_1.HookMethod
+        IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onGameStart", null);
     __decorate([
-        Mod_1.HookMethod
+        IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onItemEquip", null);
     __decorate([
-        Mod_1.HookMethod
+        IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onMove", null);
     exports.default = HelloWorld;
     var HelloWorldDictionary;
