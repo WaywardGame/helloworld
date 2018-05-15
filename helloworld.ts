@@ -31,7 +31,7 @@ export default class HelloWorld extends Mod {
 	// Hooks
 
 	@HookMethod
-	public onGameStart(isLoadingSave: boolean, playedCount: number): void {
+	public onGameScreenVisible(): void {
 		ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloWorld), MessageType.Good);
 		Items[ItemType.Branch].prefix = "a ";
 		Items[ItemType.Branch].name = "greetings stick";

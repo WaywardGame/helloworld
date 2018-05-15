@@ -19,7 +19,7 @@ define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/
         onUnload() {
             log.info("Goodbye World!");
         }
-        onGameStart(isLoadingSave, playedCount) {
+        onGameScreenVisible() {
             ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloWorld), IMessages_1.MessageType.Good);
             Items_1.default[Enums_1.ItemType.Branch].prefix = "a ";
             Items_1.default[Enums_1.ItemType.Branch].name = "greetings stick";
@@ -43,7 +43,7 @@ define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/
     }
     __decorate([
         IHookHost_1.HookMethod
-    ], HelloWorld.prototype, "onGameStart", null);
+    ], HelloWorld.prototype, "onGameScreenVisible", null);
     __decorate([
         IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onItemEquip", null);

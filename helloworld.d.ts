@@ -8,7 +8,7 @@ export default class HelloWorld extends Mod {
     onInitialize(): void;
     onLoad(saveData: any): void;
     onUnload(): void;
-    onGameStart(isLoadingSave: boolean, playedCount: number): void;
+    onGameScreenVisible(): void;
     onItemEquip(player: IPlayer, item: IItem, slot: EquipType): void;
     onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: FacingDirection): boolean | undefined;
 }
