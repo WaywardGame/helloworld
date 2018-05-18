@@ -5,7 +5,7 @@
 			"helloWorld": "Hello World!",
 			"helloLeftHand": "Hello Left Hand!",
 			"helloRightHand": "Hello Right Hand!",
-			"helloTerrain": "Hello _0_!"
+			"helloTerrain": "Hello {0}!"
 		}
 	}
 }

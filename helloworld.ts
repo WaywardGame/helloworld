@@ -2,6 +2,7 @@ import { EquipType, FacingDirection, ItemType } from "Enums";
 import { IItem } from "item/IItem";
 import Items from "item/Items";
 import { MessageType } from "language/IMessages";
+import Translation from "language/Translation";
 import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
 import { IPlayer } from "player/IPlayer";
@@ -32,7 +33,7 @@ export default class HelloWorld extends Mod {
 
 	@HookMethod
 	public onGameScreenVisible(): void {
-		ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloWorld), MessageType.Good);
+		localPlayer.sendMessage(new Translation(this.dictionary, HelloWorldDictionary.HelloWorld).get(), MessageType.Good);
 		Items[ItemType.Branch].prefix = "a ";
 		Items[ItemType.Branch].name = "greetings stick";
 	}
@@ -41,10 +42,10 @@ export default class HelloWorld extends Mod {
 	public onItemEquip(player: IPlayer, item: IItem, slot: EquipType): void {
 		if (item.type === ItemType.Branch) {
 			if (slot === EquipType.LeftHand) {
-				ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloLeftHand), MessageType.None);
+				localPlayer.sendMessage(new Translation(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
 
 			} else {
-				ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloRightHand), MessageType.None);
+				localPlayer.sendMessage(new Translation(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
 			}
 		}
 	}
@@ -53,7 +54,7 @@ export default class HelloWorld extends Mod {
 	public onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: FacingDirection): boolean | undefined {
 		const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
 		const tileType = TileHelpers.getType(getTile);
-		ui.displayMessage(localPlayer, languageManager.getTranslationString(this.dictionary, HelloWorldDictionary.HelloTerrain), MessageType.Stat, Terrains[tileType].name);
+		localPlayer.sendMessage(new Translation(this.dictionary, HelloWorldDictionary.HelloTerrain).get(Terrains[tileType].name), MessageType.Stat);
 		return undefined;
 	}
 }
