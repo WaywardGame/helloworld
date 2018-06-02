@@ -20,24 +20,26 @@ define(["require", "exports", "Enums", "item/Items", "language/IMessages", "lang
             log.info("Goodbye World!");
         }
         onGameScreenVisible() {
-            localPlayer.sendMessage(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloWorld).get(), IMessages_1.MessageType.Good);
+            game.messages.type(IMessages_1.MessageType.Good)
+                .send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloWorld).get());
             Items_1.default[Enums_1.ItemType.Branch].prefix = "a ";
             Items_1.default[Enums_1.ItemType.Branch].name = "greetings stick";
         }
         onItemEquip(player, item, slot) {
             if (item.type === Enums_1.ItemType.Branch) {
                 if (slot === Enums_1.EquipType.LeftHand) {
-                    localPlayer.sendMessage(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
+                    game.messages.send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
                 }
                 else {
-                    localPlayer.sendMessage(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
+                    game.messages.send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
                 }
             }
         }
         onMove(player, nextX, nextY, tile, direction) {
             const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
             const tileType = TileHelpers_1.default.getType(getTile);
-            localPlayer.sendMessage(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloTerrain).get(Terrains_1.default[tileType].name), IMessages_1.MessageType.Stat);
+            game.messages.type(IMessages_1.MessageType.Stat)
+                .send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloTerrain).get(Terrains_1.default[tileType].name));
             return undefined;
         }
     }
