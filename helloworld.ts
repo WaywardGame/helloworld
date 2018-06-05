@@ -8,7 +8,7 @@ import Mod from "mod/Mod";
 import { IPlayer } from "player/IPlayer";
 import { ITile } from "tile/ITerrain";
 import Terrains from "tile/Terrains";
-import Log, { Source } from "utilities/Log";
+import Log from "utilities/Log";
 import TileHelpers from "utilities/TileHelpers";
 
 let log: Log;
