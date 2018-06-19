@@ -1,4 +1,4 @@
-import { EquipType, FacingDirection, ItemType } from "Enums";
+import { Direction, EquipType, ItemType } from "Enums";
 import { IItem } from "item/IItem";
 import Items from "item/Items";
 import { MessageType } from "language/IMessages";
@@ -33,7 +33,7 @@ export default class HelloWorld extends Mod {
 
 	@HookMethod
 	public onGameScreenVisible(): void {
-		game.messages.type(MessageType.Good)
+		localPlayer.messages.type(MessageType.Good)
 			.send(new Translation(this.dictionary, HelloWorldDictionary.HelloWorld).get());
 		Items[ItemType.Branch].prefix = "a ";
 		Items[ItemType.Branch].name = "greetings stick";
@@ -43,19 +43,19 @@ export default class HelloWorld extends Mod {
 	public onItemEquip(player: IPlayer, item: IItem, slot: EquipType): void {
 		if (item.type === ItemType.Branch) {
 			if (slot === EquipType.LeftHand) {
-				game.messages.send(new Translation(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
+				player.messages.send(new Translation(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
 
 			} else {
-				game.messages.send(new Translation(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
+				player.messages.send(new Translation(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
 			}
 		}
 	}
 
 	@HookMethod
-	public onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: FacingDirection): boolean | undefined {
+	public onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined {
 		const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
 		const tileType = TileHelpers.getType(getTile);
-		game.messages.type(MessageType.Stat)
+		player.messages.type(MessageType.Stat)
 			.send(new Translation(this.dictionary, HelloWorldDictionary.HelloTerrain).get(Terrains[tileType].name));
 		return undefined;
 	}
