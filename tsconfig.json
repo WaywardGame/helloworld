@@ -8,7 +8,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "inlineSourceMap": true,
-        "baseUrl": "./mod-reference/definitions",
+        "baseUrl": "./reference/definitions",
         "types": [],
         "experimentalDecorators": true
     }
