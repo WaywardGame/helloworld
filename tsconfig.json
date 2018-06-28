@@ -4,10 +4,12 @@
         "module": "amd",
         "declaration": true,
         "noImplicitAny": true,
+        "noUnusedLocals": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true,
+        "inlineSourceMap": true,
         "baseUrl": "./mod-reference/definitions",
-        "types": []
+        "types": [],
+        "experimentalDecorators": true
     }
 }

@@ -1,4 +1,4 @@
-import { EquipType, FacingDirection } from "Enums";
+import { Direction, EquipType } from "Enums";
 import { IItem } from "item/IItem";
 import Mod from "mod/Mod";
 import { IPlayer } from "player/IPlayer";
@@ -8,7 +8,7 @@ export default class HelloWorld extends Mod {
     onInitialize(): void;
     onLoad(saveData: any): void;
     onUnload(): void;
-    onGameStart(isLoadingSave: boolean, playedCount: number): void;
+    onGameScreenVisible(): void;
     onItemEquip(player: IPlayer, item: IItem, slot: EquipType): void;
-    onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: FacingDirection): boolean | undefined;
+    onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined;
 }
