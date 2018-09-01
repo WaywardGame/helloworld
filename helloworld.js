@@ -4,45 +4,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "Enums", "item/Items", "language/IMessages", "language/Translation", "mod/IHookHost", "mod/Mod", "tile/Terrains", "utilities/TileHelpers"], function (require, exports, Enums_1, Items_1, IMessages_1, Translation_1, IHookHost_1, Mod_1, Terrains_1, TileHelpers_1) {
+define(["require", "exports", "Enums", "item/Items", "language/IMessages", "mod/IHookHost", "mod/Mod", "mod/ModRegistry", "tile/Terrains", "utilities/TileHelpers"], function (require, exports, Enums_1, Items_1, IMessages_1, IHookHost_1, Mod_1, ModRegistry_1, Terrains_1, TileHelpers_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    let log;
     class HelloWorld extends Mod_1.default {
-        onInitialize() {
-            this.dictionary = this.addDictionary("HelloWorld", HelloWorldDictionary);
-            log = this.getLog();
-        }
-        onLoad(saveData) {
-            log.info("Hello World!");
-        }
-        onUnload() {
-            log.info("Goodbye World!");
-        }
-        onGameScreenVisible() {
-            localPlayer.messages.type(IMessages_1.MessageType.Good)
-                .send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloWorld).get());
+        onLoad() {
+            this.getLog().info("Hello World!");
             Items_1.default[Enums_1.ItemType.Branch].prefix = "a ";
             Items_1.default[Enums_1.ItemType.Branch].name = "greetings stick";
         }
+        onUnload() {
+            this.getLog().info("Goodbye World!");
+        }
+        onGameScreenVisible() {
+            localPlayer.messages.type(IMessages_1.MessageType.Good)
+                .send(this.messageHelloWorld);
+        }
         onItemEquip(player, item, slot) {
-            if (item.type === Enums_1.ItemType.Branch) {
-                if (slot === Enums_1.EquipType.LeftHand) {
-                    player.messages.send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloLeftHand).get());
-                }
-                else {
-                    player.messages.send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloRightHand).get());
-                }
+            if (item.type !== Enums_1.ItemType.Branch) {
+                return;
             }
+            player.messages.send(slot === Enums_1.EquipType.LeftHand ? this.messageHelloLeftHand : this.messageHelloRightHand);
         }
         onMove(player, nextX, nextY, tile, direction) {
-            const getTile = game.getTile(localPlayer.x, localPlayer.y, localPlayer.z);
-            const tileType = TileHelpers_1.default.getType(getTile);
+            const tileType = TileHelpers_1.default.getType(tile);
             player.messages.type(IMessages_1.MessageType.Stat)
-                .send(new Translation_1.default(this.dictionary, HelloWorldDictionary.HelloTerrain).get(Terrains_1.default[tileType].name));
+                .send(this.messageHelloTerrain, Terrains_1.default[tileType].name);
             return undefined;
         }
     }
+    __decorate([
+        ModRegistry_1.default.message("HelloWorld")
+    ], HelloWorld.prototype, "messageHelloWorld", void 0);
+    __decorate([
+        ModRegistry_1.default.message("HelloLeftHand")
+    ], HelloWorld.prototype, "messageHelloLeftHand", void 0);
+    __decorate([
+        ModRegistry_1.default.message("HelloRightHand")
+    ], HelloWorld.prototype, "messageHelloRightHand", void 0);
+    __decorate([
+        ModRegistry_1.default.message("HelloTerrain")
+    ], HelloWorld.prototype, "messageHelloTerrain", void 0);
     __decorate([
         IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onGameScreenVisible", null);
@@ -53,12 +55,5 @@ define(["require", "exports", "Enums", "item/Items", "language/IMessages", "lang
         IHookHost_1.HookMethod
     ], HelloWorld.prototype, "onMove", null);
     exports.default = HelloWorld;
-    var HelloWorldDictionary;
-    (function (HelloWorldDictionary) {
-        HelloWorldDictionary[HelloWorldDictionary["HelloWorld"] = 0] = "HelloWorld";
-        HelloWorldDictionary[HelloWorldDictionary["HelloLeftHand"] = 1] = "HelloLeftHand";
-        HelloWorldDictionary[HelloWorldDictionary["HelloRightHand"] = 2] = "HelloRightHand";
-        HelloWorldDictionary[HelloWorldDictionary["HelloTerrain"] = 3] = "HelloTerrain";
-    })(HelloWorldDictionary || (HelloWorldDictionary = {}));
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSGVsbG9Xb3JsZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkhlbGxvV29ybGQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0lBYUEsSUFBSSxHQUFRLENBQUM7SUFFYixnQkFBZ0MsU0FBUSxhQUFHO1FBR25DLFlBQVk7WUFDbEIsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUMsYUFBYSxDQUFDLFlBQVksRUFBRSxvQkFBb0IsQ0FBQyxDQUFDO1lBQ3pFLEdBQUcsR0FBRyxJQUFJLENBQUMsTUFBTSxFQUFFLENBQUM7UUFDckIsQ0FBQztRQUVNLE1BQU0sQ0FBQyxRQUFhO1lBQzFCLEdBQUcsQ0FBQyxJQUFJLENBQUMsY0FBYyxDQUFDLENBQUM7UUFDMUIsQ0FBQztRQUVNLFFBQVE7WUFDZCxHQUFHLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLENBQUM7UUFDNUIsQ0FBQztRQUtNLG1CQUFtQjtZQUN6QixXQUFXLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyx1QkFBVyxDQUFDLElBQUksQ0FBQztpQkFDekMsSUFBSSxDQUFDLElBQUkscUJBQVcsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLG9CQUFvQixDQUFDLFVBQVUsQ0FBQyxDQUFDLEdBQUcsRUFBRSxDQUFDLENBQUM7WUFDaEYsZUFBSyxDQUFDLGdCQUFRLENBQUMsTUFBTSxDQUFDLENBQUMsTUFBTSxHQUFHLElBQUksQ0FBQztZQUNyQyxlQUFLLENBQUMsZ0JBQVEsQ0FBQyxNQUFNLENBQUMsQ0FBQyxJQUFJLEdBQUcsaUJBQWlCLENBQUM7UUFDakQsQ0FBQztRQUdNLFdBQVcsQ0FBQyxNQUFlLEVBQUUsSUFBVyxFQUFFLElBQWU7WUFDL0QsSUFBSSxJQUFJLENBQUMsSUFBSSxLQUFLLGdCQUFRLENBQUMsTUFBTSxFQUFFO2dCQUNsQyxJQUFJLElBQUksS0FBSyxpQkFBUyxDQUFDLFFBQVEsRUFBRTtvQkFDaEMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsSUFBSSxxQkFBVyxDQUFDLElBQUksQ0FBQyxVQUFVLEVBQUUsb0JBQW9CLENBQUMsYUFBYSxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUMsQ0FBQztpQkFFakc7cUJBQU07b0JBQ04sTUFBTSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsSUFBSSxxQkFBVyxDQUFDLElBQUksQ0FBQyxVQUFVLEVBQUUsb0JBQW9CLENBQUMsY0FBYyxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUMsQ0FBQztpQkFDbEc7YUFDRDtRQUNGLENBQUM7UUFHTSxNQUFNLENBQUMsTUFBZSxFQUFFLEtBQWEsRUFBRSxLQUFhLEVBQUUsSUFBVyxFQUFFLFNBQW9CO1lBQzdGLE1BQU0sT0FBTyxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLENBQUMsRUFBRSxXQUFXLENBQUMsQ0FBQyxFQUFFLFdBQVcsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUMxRSxNQUFNLFFBQVEsR0FBRyxxQkFBVyxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQztZQUM5QyxNQUFNLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyx1QkFBVyxDQUFDLElBQUksQ0FBQztpQkFDcEMsSUFBSSxDQUFDLElBQUkscUJBQVcsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLG9CQUFvQixDQUFDLFlBQVksQ0FBQyxDQUFDLEdBQUcsQ0FBQyxrQkFBUSxDQUFDLFFBQVEsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUM7WUFDekcsT0FBTyxTQUFTLENBQUM7UUFDbEIsQ0FBQztLQUNEO0lBM0JBO1FBREMsc0JBQVU7eURBTVY7SUFHRDtRQURDLHNCQUFVO2lEQVVWO0lBR0Q7UUFEQyxzQkFBVTs0Q0FPVjtJQTdDRiw2QkE4Q0M7SUFFRCxJQUFLLG9CQUtKO0lBTEQsV0FBSyxvQkFBb0I7UUFDeEIsMkVBQVUsQ0FBQTtRQUNWLGlGQUFhLENBQUE7UUFDYixtRkFBYyxDQUFBO1FBQ2QsK0VBQVksQ0FBQTtJQUNiLENBQUMsRUFMSSxvQkFBb0IsS0FBcEIsb0JBQW9CLFFBS3hCIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSGVsbG9Xb3JsZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkhlbGxvV29ybGQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0lBWUEsTUFBcUIsVUFBVyxTQUFRLGFBQUc7UUFrQm5DLE1BQU07WUFDWixJQUFJLENBQUMsTUFBTSxFQUFFLENBQUMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxDQUFDO1lBR25DLGVBQUssQ0FBQyxnQkFBUSxDQUFDLE1BQU0sQ0FBQyxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUM7WUFDckMsZUFBSyxDQUFDLGdCQUFRLENBQUMsTUFBTSxDQUFDLENBQUMsSUFBSSxHQUFHLGlCQUFpQixDQUFDO1FBQ2pELENBQUM7UUFLTSxRQUFRO1lBQ2QsSUFBSSxDQUFDLE1BQU0sRUFBRSxDQUFDLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDO1FBQ3RDLENBQUM7UUFZTSxtQkFBbUI7WUFFekIsV0FBVyxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsdUJBQVcsQ0FBQyxJQUFJLENBQUM7aUJBQ3pDLElBQUksQ0FBQyxJQUFJLENBQUMsaUJBQWlCLENBQUMsQ0FBQztRQUNoQyxDQUFDO1FBV00sV0FBVyxDQUFDLE1BQWUsRUFBRSxJQUFXLEVBQUUsSUFBZTtZQUUvRCxJQUFJLElBQUksQ0FBQyxJQUFJLEtBQUssZ0JBQVEsQ0FBQyxNQUFNLEVBQUU7Z0JBQ2xDLE9BQU87YUFDUDtZQUlELE1BQU0sQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLElBQUksS0FBSyxpQkFBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLG9CQUFvQixDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMscUJBQXFCLENBQUMsQ0FBQztRQUM1RyxDQUFDO1FBZ0JNLE1BQU0sQ0FBQyxNQUFlLEVBQUUsS0FBYSxFQUFFLEtBQWEsRUFBRSxJQUFXLEVBQUUsU0FBb0I7WUFDN0YsTUFBTSxRQUFRLEdBQUcscUJBQVcsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7WUFHM0MsTUFBTSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsdUJBQVcsQ0FBQyxJQUFJLENBQUM7aUJBR3BDLElBQUksQ0FBQyxJQUFJLENBQUMsbUJBQW1CLEVBQUUsa0JBQW1CLENBQUMsUUFBUSxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUM7WUFFckUsT0FBTyxTQUFTLENBQUM7UUFDbEIsQ0FBQztLQUNEO0lBdkZBO1FBREMscUJBQVEsQ0FBQyxPQUFPLENBQUMsWUFBWSxDQUFDO3lEQUNZO0lBRTNDO1FBREMscUJBQVEsQ0FBQyxPQUFPLENBQUMsZUFBZSxDQUFDOzREQUNZO0lBRTlDO1FBREMscUJBQVEsQ0FBQyxPQUFPLENBQUMsZ0JBQWdCLENBQUM7NkRBQ1k7SUFFL0M7UUFEQyxxQkFBUSxDQUFDLE9BQU8sQ0FBQyxjQUFjLENBQUM7MkRBQ1k7SUE4QjdDO1FBREMsc0JBQVU7eURBS1Y7SUFXRDtRQURDLHNCQUFVO2lEQVVWO0lBZ0JEO1FBREMsc0JBQVU7NENBV1Y7SUE3RkYsNkJBOEZDIn0=

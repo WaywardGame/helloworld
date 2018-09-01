@@ -1,11 +1,11 @@
 {
 	"extends": "English",
 	"dictionaries": {
-		"helloWorld": {
-			"helloWorld": "Hello World!",
-			"helloLeftHand": "Hello Left Hand!",
-			"helloRightHand": "Hello Right Hand!",
-			"helloTerrain": "Hello {0}!"
+		"message": {
+			"modHelloWorldHelloWorld": "Hello World!",
+			"modHelloWorldHelloLeftHand": "Hello Left Hand!",
+			"modHelloWorldHelloRightHand": "Hello Right Hand!",
+			"modHelloWorldHelloTerrain": "Hello {0}!"
 		}
 	}
 }
