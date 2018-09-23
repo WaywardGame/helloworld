@@ -5,7 +5,10 @@
 			"modHelloWorldHelloWorld": "Hello World!",
 			"modHelloWorldHelloLeftHand": "Hello Left Hand!",
 			"modHelloWorldHelloRightHand": "Hello Right Hand!",
-			"modHelloWorldHelloTerrain": "Hello {0}!"
+			"modHelloWorldHelloTerrain": "Hello {Terrain:{0}}!"
+		},
+		"item": {
+			"branch": ["greetings stick", "A tool with which to say hello."]
 		}
 	}
 }

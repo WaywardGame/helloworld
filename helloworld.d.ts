@@ -1,6 +1,6 @@
 import { Direction, EquipType } from "Enums";
 import { IItem } from "item/IItem";
-import { Message } from "language/IMessages";
+import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
 import { IPlayer } from "player/IPlayer";
 import { ITile } from "tile/ITerrain";
