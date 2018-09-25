@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"author": "Your Name Here",
 	"compatibleMinorVersions": [
-		6
+		7
 	],
 	"unloadable": true,
 	"file": "HelloWorld.js",
