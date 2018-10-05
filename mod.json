@@ -10,5 +10,9 @@
 	"file": "HelloWorld.js",
 	"languages": [
 		"lang/english"
+	],
+	"tags": [
+		"Item",
+		"Terrain"
 	]
 }
