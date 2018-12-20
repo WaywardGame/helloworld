@@ -1,13 +1,12 @@
 import { Direction, EquipType, ItemType } from "Enums";
 import { IItem } from "item/IItem";
-import Items from "item/Items";
-import { Message, MessageType } from "language/IMessages";
+import Message from "language/dictionary/Message";
 import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
 import { IPlayer } from "player/IPlayer";
+import { MessageType } from "player/MessageManager";
 import { ITile } from "tile/ITerrain";
-import terrainDescriptions from "tile/Terrains";
 import TileHelpers from "utilities/TileHelpers";
 
 export default class HelloWorld extends Mod {
@@ -30,10 +29,6 @@ export default class HelloWorld extends Mod {
 	 */
 	public onLoad(): void {
 		this.getLog().info("Hello World!");
-
-		// we change the name of the "branch" item to "greetings stick"
-		Items[ItemType.Branch].prefix = "a ";
-		Items[ItemType.Branch].name = "greetings stick";
 	}
 
 	/**
@@ -100,7 +95,7 @@ export default class HelloWorld extends Mod {
 		player.messages.type(MessageType.Stat)
 			// we first list which message we're sending, then we list all the arguments we're giving to that message.
 			// in this case, the only argument we're giving it is the name of the tile we're standing on
-			.send(this.messageHelloTerrain, terrainDescriptions[tileType].name);
+			.send(this.messageHelloTerrain, tileType);
 
 		return undefined;
 	}
