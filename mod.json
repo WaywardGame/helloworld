@@ -7,7 +7,7 @@
 		7
 	],
 	"unloadable": true,
-	"file": "HelloWorld.js",
+	"file": "out/HelloWorld.js",
 	"languages": [
 		"lang/english"
 	],
