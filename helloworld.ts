@@ -1,12 +1,13 @@
-import { Direction, EquipType, ItemType } from "Enums";
-import { IItem } from "item/IItem";
+import { EquipType } from "entity/IHuman";
+import { IPlayer } from "entity/player/IPlayer";
+import { MessageType } from "entity/player/MessageManager";
+import { IItem, ItemType } from "item/IItem";
 import Message from "language/dictionary/Message";
 import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
-import { IPlayer } from "player/IPlayer";
-import { MessageType } from "player/MessageManager";
 import { ITile } from "tile/ITerrain";
+import { Direction } from "utilities/math/Direction";
 import TileHelpers from "utilities/TileHelpers";
 
 export default class HelloWorld extends Mod {

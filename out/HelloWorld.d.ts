@@ -1,9 +1,10 @@
-import { Direction, EquipType } from "Enums";
+import { EquipType } from "entity/IHuman";
+import { IPlayer } from "entity/player/IPlayer";
 import { IItem } from "item/IItem";
 import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
-import { IPlayer } from "player/IPlayer";
 import { ITile } from "tile/ITerrain";
+import { Direction } from "utilities/math/Direction";
 export default class HelloWorld extends Mod {
     readonly messageHelloWorld: Message;
     readonly messageHelloLeftHand: Message;
