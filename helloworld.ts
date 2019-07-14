@@ -1,6 +1,6 @@
 import { EquipType } from "entity/IHuman";
-import { IPlayer } from "entity/player/IPlayer";
 import { MessageType } from "entity/player/MessageManager";
+import Player from "entity/player/Player";
 import { IItem, ItemType } from "item/IItem";
 import Message from "language/dictionary/Message";
 import { HookMethod } from "mod/IHookHost";
@@ -64,7 +64,7 @@ export default class HelloWorld extends Mod {
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onitemequip
 	 */
 	@HookMethod
-	public onItemEquip(player: IPlayer, item: IItem, slot: EquipType) {
+	public onItemEquip(player: Player, item: IItem, slot: EquipType) {
 		// if the item that is being equipped is *not*, a "greetings stick", we're not going to touch it
 		if (item.type !== ItemType.Branch) {
 			return;
@@ -89,7 +89,7 @@ export default class HelloWorld extends Mod {
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onmove
 	 */
 	@HookMethod
-	public onMove(player: IPlayer, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined {
+	public onMove(player: Player, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined {
 		const tileType = TileHelpers.getType(tile);
 
 		// we send a message to this player with the type "stat" (orange)
