@@ -1,7 +1,8 @@
 import { EquipType } from "entity/IHuman";
 import { MessageType } from "entity/player/MessageManager";
 import Player from "entity/player/Player";
-import { IItem, ItemType } from "item/IItem";
+import { ItemType } from "item/IItem";
+import Item from "item/Item";
 import Message from "language/dictionary/Message";
 import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
@@ -28,14 +29,14 @@ export default class HelloWorld extends Mod {
 	/**
 	 * Executed when a save is loaded.
 	 */
-	public onLoad(): void {
+	@Override public onLoad(): void {
 		this.getLog().info("Hello World!");
 	}
 
 	/**
 	 * Executed when a save is unloaded.
 	 */
-	public onUnload(): void {
+	@Override public onUnload(): void {
 		this.getLog().info("Goodbye World!");
 	}
 
@@ -48,7 +49,7 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#ongamescreenvisible
 	 */
-	@HookMethod
+	@Override @HookMethod
 	public onGameScreenVisible() {
 		// we send a "hello world" message to the local player, using the "good" type (green)
 		localPlayer.messages.type(MessageType.Good)
@@ -63,8 +64,8 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onitemequip
 	 */
-	@HookMethod
-	public onItemEquip(player: Player, item: IItem, slot: EquipType) {
+	@Override @HookMethod
+	public onItemEquip(player: Player, item: Item, slot: EquipType) {
 		// if the item that is being equipped is *not*, a "greetings stick", we're not going to touch it
 		if (item.type !== ItemType.Branch) {
 			return;
@@ -88,7 +89,7 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onmove
 	 */
-	@HookMethod
+	@Override @HookMethod
 	public onMove(player: Player, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined {
 		const tileType = TileHelpers.getType(tile);
 
