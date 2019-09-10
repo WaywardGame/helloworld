@@ -3,9 +3,7 @@
 	"description": "Hello World is an example mod, shown in the Modding Guide, located here: https://waywardgame.github.io/",
 	"version": "1.0.0",
 	"author": "Your Name Here",
-	"compatibleMinorVersions": [
-		8
-	],
+	"waywardVersion": "2.8.0-beta",
 	"unloadable": true,
 	"file": "out/HelloWorld.js",
 	"languages": [
