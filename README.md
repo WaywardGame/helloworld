@@ -6,5 +6,5 @@ Hello World is an example mod, shown in the Modding Guide, located here: [https:
 ```
 git clone https://github.com/WaywardGame/helloworld.git
 cd helloworld
-git submodule update --init
+path/to/wayward/install/wayward.exe +mod update .
 ```
