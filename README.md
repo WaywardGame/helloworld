@@ -1,6 +1,6 @@
 # Hello World
 
-Hello World is an example mod, shown in the Modding Guide, located here: [https://waywardgame.github.io/](https://waywardgame.github.io/)
+Hello World is an example mod, shown in the Modding Guide, located here: [github.com/WaywardGame/types/wiki](https://github.com/WaywardGame/types/wiki)
 
 ## Cloning/Setup:
 ```
