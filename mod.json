@@ -1,9 +1,9 @@
 {
 	"name": "Hello World",
-	"description": "Hello World is an example mod, shown in the Modding Guide, located here: https://waywardgame.github.io/",
+	"description": "Hello World is an example mod.",
 	"version": "1.0.0",
 	"author": "Your Name Here",
-	"waywardVersion": "2.8.0-beta",
+	"waywardVersion": "2.9.0-beta",
 	"unloadable": true,
 	"file": "out/HelloWorld.js",
 	"languages": [

@@ -1,5 +1,5 @@
 import { EquipType } from "entity/IHuman";
-import { MessageType } from "entity/player/MessageManager";
+import { MessageType } from "entity/player/IMessageManager";
 import Player from "entity/player/Player";
 import { ItemType } from "item/IItem";
 import Item from "item/Item";
