@@ -1,15 +1,15 @@
-import { EquipType } from "entity/IHuman";
-import { MessageType } from "entity/player/IMessageManager";
-import Player from "entity/player/Player";
-import { ItemType } from "item/IItem";
-import Item from "item/Item";
+import { EquipType } from "game/entity/IHuman";
+import { MessageType } from "game/entity/player/IMessageManager";
+import Player from "game/entity/player/Player";
+import { ItemType } from "game/item/IItem";
+import Item from "game/item/Item";
+import { ITile } from "game/tile/ITerrain";
 import Message from "language/dictionary/Message";
 import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
-import { ITile } from "tile/ITerrain";
+import TileHelpers from "utilities/game/TileHelpers";
 import { Direction } from "utilities/math/Direction";
-import TileHelpers from "utilities/TileHelpers";
 
 export default class HelloWorld extends Mod {
 

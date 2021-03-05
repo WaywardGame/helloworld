@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "entity/IHuman", "entity/player/IMessageManager", "item/IItem", "mod/IHookHost", "mod/Mod", "mod/ModRegistry", "utilities/TileHelpers"], function (require, exports, IHuman_1, IMessageManager_1, IItem_1, IHookHost_1, Mod_1, ModRegistry_1, TileHelpers_1) {
+define(["require", "exports", "game/entity/IHuman", "game/entity/player/IMessageManager", "game/item/IItem", "mod/IHookHost", "mod/Mod", "mod/ModRegistry", "utilities/game/TileHelpers"], function (require, exports, IHuman_1, IMessageManager_1, IItem_1, IHookHost_1, Mod_1, ModRegistry_1, TileHelpers_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class HelloWorld extends Mod_1.default {
