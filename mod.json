@@ -3,7 +3,8 @@
 	"description": "Hello World is an example mod.",
 	"version": "1.0.0",
 	"author": "Your Name Here",
-	"waywardVersion": "2.9.0-beta",
+	"github": "https://github.com/WaywardGame/helloworld",
+	"waywardVersion": "2.10.0-beta",
 	"unloadable": true,
 	"file": "out/HelloWorld.js",
 	"languages": [

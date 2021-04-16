@@ -1,9 +1,9 @@
-import { EquipType } from "entity/IHuman";
-import Player from "entity/player/Player";
-import Item from "item/Item";
+import { EquipType } from "game/entity/IHuman";
+import Player from "game/entity/player/Player";
+import Item from "game/item/Item";
+import { ITile } from "game/tile/ITerrain";
 import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
-import { ITile } from "tile/ITerrain";
 import { Direction } from "utilities/math/Direction";
 export default class HelloWorld extends Mod {
     readonly messageHelloWorld: Message;
