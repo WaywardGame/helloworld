@@ -1,21 +1,11 @@
 {
+    "extends": "@wayward/types/tsconfig.mod.base.json",
     "compilerOptions": {
-        "target": "es2019",
-        "module": "amd",
-        "declaration": true,
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "inlineSourceMap": true,
         "baseUrl": "./",
-        "paths": {
-            "*": ["node_modules/@wayward/types/definitions/*"],
-            "@wayward/goodstream": [  "node_modules/@wayward/goodstream/Stream" ],
-            "@wayward/goodstream/*": [ "node_modules/@wayward/goodstream/*" ]
-        },
-        "types": [],
-        "outDir": "out",
-        "experimentalDecorators": true
-    }
+        "outDir": "./out",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src/**/*"
+    ]
 }
