@@ -1,3 +1,5 @@
+import { EventBus } from "event/EventBuses";
+import { EventHandler } from "event/EventManager";
 import { EquipType } from "game/entity/IHuman";
 import { MessageType } from "game/entity/player/IMessageManager";
 import Player from "game/entity/player/Player";
@@ -5,11 +7,10 @@ import { ItemType } from "game/item/IItem";
 import Item from "game/item/Item";
 import { ITile } from "game/tile/ITerrain";
 import Message from "language/dictionary/Message";
-import { HookMethod } from "mod/IHookHost";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
+import GameScreen from "ui/screen/screens/GameScreen";
 import TileHelpers from "utilities/game/TileHelpers";
-import { Direction } from "utilities/math/Direction";
 
 export default class HelloWorld extends Mod {
 
@@ -29,14 +30,14 @@ export default class HelloWorld extends Mod {
 	/**
 	 * Executed when a save is loaded.
 	 */
-	@Override public onLoad(): void {
+	public override onLoad(): void {
 		this.getLog().info("Hello World!");
 	}
 
 	/**
 	 * Executed when a save is unloaded.
 	 */
-	@Override public onUnload(): void {
+	public override onUnload(): void {
 		this.getLog().info("Goodbye World!");
 	}
 
@@ -49,7 +50,7 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#ongamescreenvisible
 	 */
-	@Override @HookMethod
+	@EventHandler(GameScreen, "show")
 	public onGameScreenVisible() {
 		// we send a "hello world" message to the local player, using the "good" type (green)
 		localPlayer.messages.type(MessageType.Good)
@@ -64,7 +65,7 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onitemequip
 	 */
-	@Override @HookMethod
+	@EventHandler(EventBus.Players, "equip")
 	public onItemEquip(player: Player, item: Item, slot: EquipType) {
 		// if the item that is being equipped is *not*, a "greetings stick", we're not going to touch it
 		if (item.type !== ItemType.Branch) {
@@ -89,8 +90,8 @@ export default class HelloWorld extends Mod {
 	 * 
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onmove
 	 */
-	@Override @HookMethod
-	public onMove(player: Player, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined {
+	@EventHandler(EventBus.Players, "preMove")
+	public onMove(player: Player, fromX: number, fromY: number, fromZ: number, fromTile: ITile, nextX: number, nextY: number, nextZ: number, tile: ITile): boolean | void | undefined {
 		const tileType = TileHelpers.getType(tile);
 
 		// we send a message to this player with the type "stat" (orange)

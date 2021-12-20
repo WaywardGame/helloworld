@@ -4,7 +4,6 @@ import Item from "game/item/Item";
 import { ITile } from "game/tile/ITerrain";
 import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
-import { Direction } from "utilities/math/Direction";
 export default class HelloWorld extends Mod {
     readonly messageHelloWorld: Message;
     readonly messageHelloLeftHand: Message;
@@ -14,5 +13,5 @@ export default class HelloWorld extends Mod {
     onUnload(): void;
     onGameScreenVisible(): void;
     onItemEquip(player: Player, item: Item, slot: EquipType): void;
-    onMove(player: Player, nextX: number, nextY: number, tile: ITile, direction: Direction): boolean | undefined;
+    onMove(player: Player, fromX: number, fromY: number, fromZ: number, fromTile: ITile, nextX: number, nextY: number, nextZ: number, tile: ITile): boolean | void | undefined;
 }
