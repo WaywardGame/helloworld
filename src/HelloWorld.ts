@@ -42,7 +42,7 @@ export default class HelloWorld extends Mod {
 	}
 
 	////////////////////////////////////
-	// Hooks
+	// Event Handlers
 	//
 
 	/**
