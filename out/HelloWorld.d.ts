@@ -6,8 +6,8 @@ import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
 export default class HelloWorld extends Mod {
     readonly messageHelloWorld: Message;
-    readonly messageHelloLeftHand: Message;
-    readonly messageHelloRightHand: Message;
+    readonly messageHelloMainHand: Message;
+    readonly messageHelloOffHand: Message;
     readonly messageHelloTerrain: Message;
     onLoad(): void;
     onUnload(): void;
