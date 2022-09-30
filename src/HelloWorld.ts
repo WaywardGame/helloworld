@@ -20,10 +20,10 @@ export default class HelloWorld extends Mod {
 
 	@Register.message("HelloWorld")
 	public readonly messageHelloWorld: Message;
-	@Register.message("HelloLeftHand")
-	public readonly messageHelloLeftHand: Message;
-	@Register.message("HelloRightHand")
-	public readonly messageHelloRightHand: Message;
+	@Register.message("HelloMainHand")
+	public readonly messageHelloMainHand: Message;
+	@Register.message("HelloOffHand")
+	public readonly messageHelloOffHand: Message;
 	@Register.message("HelloTerrain")
 	public readonly messageHelloTerrain: Message;
 
@@ -74,7 +74,7 @@ export default class HelloWorld extends Mod {
 
 		// we changed the branch item to be called the "greetings stick", now let's add some extra functionality to it
 		// we send the player a message, saying hello to whichever hand the branch was equipped to
-		player.messages.send(slot === EquipType.LeftHand ? this.messageHelloLeftHand : this.messageHelloRightHand);
+		player.messages.send(slot === EquipType.MainHand ? this.messageHelloMainHand : this.messageHelloOffHand);
 	}
 
 	/**

@@ -3,8 +3,8 @@
 	"dictionaries": {
 		"message": {
 			"modHelloWorldHelloWorld": "Hello World!",
-			"modHelloWorldHelloLeftHand": "Hello Left Hand!",
-			"modHelloWorldHelloRightHand": "Hello Right Hand!",
+			"modHelloWorldHelloMainHand": "Hello Main Hand!",
+			"modHelloWorldHelloOffHand": "Hello Off Hand!",
 			"modHelloWorldHelloTerrain": "Hello {Terrain:{0}}!"
 		},
 		"item": {
