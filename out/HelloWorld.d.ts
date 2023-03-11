@@ -1,7 +1,7 @@
 import { EquipType } from "game/entity/IHuman";
 import Player from "game/entity/player/Player";
 import Item from "game/item/Item";
-import { ITile } from "game/tile/ITerrain";
+import Tile from "game/tile/Tile";
 import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
 export default class HelloWorld extends Mod {
@@ -13,5 +13,5 @@ export default class HelloWorld extends Mod {
     onUnload(): void;
     onGameScreenVisible(): void;
     onItemEquip(player: Player, item: Item, slot: EquipType): void;
-    onMove(player: Player, fromX: number, fromY: number, fromZ: number, fromTile: ITile, nextX: number, nextY: number, nextZ: number, tile: ITile): boolean | void | undefined;
+    onMove(player: Player, fromTile: Tile, tile: Tile): boolean | void | undefined;
 }

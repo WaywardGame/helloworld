@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"author": "Your Name Here",
 	"github": "https://github.com/WaywardGame/helloworld",
-	"waywardVersion": "2.12.0-beta",
+	"waywardVersion": "2.13.0-beta",
 	"unloadable": true,
 	"file": "out/HelloWorld.js",
 	"languages": [
