@@ -5,12 +5,11 @@ import { MessageType } from "game/entity/player/IMessageManager";
 import Player from "game/entity/player/Player";
 import { ItemType } from "game/item/IItem";
 import Item from "game/item/Item";
-import { ITile } from "game/tile/ITerrain";
+import Tile from "game/tile/Tile";
 import Message from "language/dictionary/Message";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
 import GameScreen from "ui/screen/screens/GameScreen";
-import TileHelpers from "utilities/game/TileHelpers";
 
 export default class HelloWorld extends Mod {
 
@@ -80,8 +79,6 @@ export default class HelloWorld extends Mod {
 	/**
 	 * Called when a player moves.
 	 * @param player The player that moved.
-	 * @param nextX The new `x` position of the player.
-	 * @param nextY The new `y` position of the player.
 	 * @param tile The tile that the player is moving to.
 	 * @param direction The direction the player is moving in.
 	 * 
@@ -91,8 +88,8 @@ export default class HelloWorld extends Mod {
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onmove
 	 */
 	@EventHandler(EventBus.Players, "preMove")
-	public onMove(player: Player, fromX: number, fromY: number, fromZ: number, fromTile: ITile, nextX: number, nextY: number, nextZ: number, tile: ITile): boolean | void | undefined {
-		const tileType = TileHelpers.getType(tile);
+	public onMove(player: Player, fromTile: Tile, tile: Tile): boolean | void | undefined {
+		const tileType = tile.type;
 
 		// we send a message to this player with the type "stat" (orange)
 		player.messages.type(MessageType.Stat)
