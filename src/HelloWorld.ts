@@ -41,14 +41,14 @@ export default class HelloWorld extends Mod {
 	 * Executed when a save is loaded.
 	 */
 	public override onLoad(): void {
-		this.getLog().info("Hello World!");
+		this.log.info("Hello World!");
 	}
 
 	/**
 	 * Executed when a save is unloaded.
 	 */
 	public override onUnload(): void {
-		this.getLog().info("Goodbye World!");
+		this.log.info("Goodbye World!");
 	}
 
 	////////////////////////////////////
