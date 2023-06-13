@@ -1,3 +1,14 @@
+/*!
+ * Copyright 2011-2023 Unlok
+ * https://www.unlok.ca
+ *
+ * Credits & Thanks:
+ * https://www.unlok.ca/credits-thanks/
+ *
+ * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
+ * https://github.com/WaywardGame/types/wiki
+ */
+
 import { EventBus } from "event/EventBuses";
 import { EventHandler } from "event/EventManager";
 import { EquipType } from "game/entity/IHuman";
@@ -30,14 +41,14 @@ export default class HelloWorld extends Mod {
 	 * Executed when a save is loaded.
 	 */
 	public override onLoad(): void {
-		this.getLog().info("Hello World!");
+		this.log.info("Hello World!");
 	}
 
 	/**
 	 * Executed when a save is unloaded.
 	 */
 	public override onUnload(): void {
-		this.getLog().info("Goodbye World!");
+		this.log.info("Goodbye World!");
 	}
 
 	////////////////////////////////////
