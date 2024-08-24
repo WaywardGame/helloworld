@@ -1,15 +1,17 @@
 {
 	"name": "@wayward/helloworld",
+	"private": true,
 	"version": "1.0.0",
 	"main": "out/HelloWorld.js",
 	"types": "out/HelloWorld.d.ts",
 	"scripts": {
-		"clean": "rimraf ./out ./tsconfig.*tsbuildinfo",
-		"build": "tsc --build --pretty",
-		"watch": "tsc --build --watch --pretty --preserveWatchOutput"
+		"clean": "npx rimraf ./out ./tsconfig.*tsbuildinfo",
+		"build": "npx tsc --build --pretty",
+		"watch": "npx tsc --build --watch --pretty --preserveWatchOutput"
 	},
 	"devDependencies": {
-		"@wayward/types": "^2.14.0-beta.dev.20240823.11",
+		"@wayward/types": "^2.14.0-beta.dev.20240824.2",
+		"rimraf": "3.0.2",
 		"typescript": "^5.6.1-rc"
 	}
 }
