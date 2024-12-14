@@ -1,26 +1,15 @@
-/*!
- * Copyright 2011-2023 Unlok
- * https://www.unlok.ca
- *
- * Credits & Thanks:
- * https://www.unlok.ca/credits-thanks/
- *
- * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
- * https://github.com/WaywardGame/types/wiki
- */
-
-import { EventBus } from "event/EventBuses";
-import { EventHandler } from "event/EventManager";
-import { EquipType } from "game/entity/IHuman";
-import { MessageType } from "game/entity/player/IMessageManager";
-import Player from "game/entity/player/Player";
-import { ItemType } from "game/item/IItem";
-import Item from "game/item/Item";
-import Tile from "game/tile/Tile";
-import Message from "language/dictionary/Message";
-import Mod from "mod/Mod";
-import Register from "mod/ModRegistry";
-import GameScreen from "ui/screen/screens/GameScreen";
+import { EventBus } from "@wayward/game/event/EventBuses";
+import { EventHandler } from "@wayward/game/event/EventManager";
+import { EquipType } from "@wayward/game/game/entity/IHuman";
+import { MessageType } from "@wayward/game/game/entity/player/IMessageManager";
+import type Player from "@wayward/game/game/entity/player/Player";
+import { ItemType } from "@wayward/game/game/item/IItem";
+import type Item from "@wayward/game/game/item/Item";
+import type Tile from "@wayward/game/game/tile/Tile";
+import type Message from "@wayward/game/language/dictionary/Message";
+import Mod from "@wayward/game/mod/Mod";
+import Register from "@wayward/game/mod/ModRegistry";
+import GameScreen from "@wayward/game/ui/screen/screens/GameScreen";
 
 export default class HelloWorld extends Mod {
 
@@ -61,7 +50,7 @@ export default class HelloWorld extends Mod {
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#ongamescreenvisible
 	 */
 	@EventHandler(GameScreen, "show")
-	public onGameScreenVisible() {
+	public onGameScreenVisible(): void {
 		// we send a "hello world" message to the local player, using the "good" type (green)
 		localPlayer.messages.type(MessageType.Good)
 			.send(this.messageHelloWorld);
@@ -76,7 +65,7 @@ export default class HelloWorld extends Mod {
 	 * For more information on this hook, see: https://waywardgame.github.io/modules/ihookhost.html#onitemequip
 	 */
 	@EventHandler(EventBus.Players, "equip")
-	public onItemEquip(player: Player, item: Item, slot: EquipType) {
+	public onItemEquip(player: Player, item: Item, slot: EquipType): void {
 		// if the item that is being equipped is *not*, a "greetings stick", we're not going to touch it
 		if (item.type !== ItemType.Branch) {
 			return;
